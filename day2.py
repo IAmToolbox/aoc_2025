@@ -39,13 +39,8 @@ def day_2(part):
                 # Time to assemble a bit of a complex loop
                 # What it should do is check each digit individually, then check on steps of 2, then 3, and so on
                 for amount in range(1, len(string_i) + 1):
-                    regex = ""
-                    for _j in range(amount):
-                        regex = regex + "\d" # Will this even work??????????
-                    split_i = re.findall(regex, string_i)
-                    if len(split_i) == 1:
-                        continue
-                    print(split_i)
+                    pattern = re.compile(r"^(\d+)\1+$") # THIS REGEX IS THE ONE THAT DID IT HALLELUJAH
+                    split_i = pattern.findall(string_i)
                     if is_all_equal(split_i):
                         id_sum += i
                         break
@@ -53,4 +48,4 @@ def day_2(part):
         print(f"Heavy doubts but the code may be: {id_sum}")
 
 def is_all_equal(split_i):
-    return len(set(split_i)) <= 1
+    return len(set(split_i)) == 1
