@@ -1,5 +1,6 @@
 from day1 import day_1
 from day2 import day_2
+from day3 import day_3
 
 def main():
     day = int(input("What day will you run? "))
@@ -9,6 +10,11 @@ def main():
             day_1(part)
         case 2:
             day_2(part)
+        case 3:
+            day_3(part)
+        case _:
+            print("Invalid input")
+            exit(1)
 
 if __name__ == "__main__":
     main()
