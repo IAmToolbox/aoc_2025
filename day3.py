@@ -31,20 +31,20 @@ def day_3(part):
     if part == 2:
         total_joltage = 0
         for line in input_splits:
-            potential_values = np.full(12, float("-inf"))
-            joltage_multiplier = 1000000000000 # Initialize this with 12 zeroes to serve as a multiplier
-            joltage_bank = 0
-            position = 0
-            for i in range(len(potential_values)):
-                for j in range(position, len(line)):
-                    if int(line[j]) > potential_values[i]:
-                        position = j
-                        potential_values[i] = int(line[j])
-                position += 1
-            for value in potential_values:
-                joltage_bank += value * joltage_multiplier
-                joltage_multiplier //= 10
+            joltage_bank = strip_and_convert(line)
+            print(joltage_bank)
             total_joltage += joltage_bank
 
 
         print(f"Is this amount correct? {total_joltage}")
+
+def strip_and_convert(line):
+    print(line)
+    line_edited = []
+    for i in range(len(line)):
+        line_edited.append(line[i]) # Turning the entire thing into a list so I can easily mutate it
+    for i in range(1, 10):
+        while str(i) in line_edited:
+            if len(line_edited) == 12:
+                return int("".join(line_edited)) # Returns an integer version of the line if the line is 12 digits long already
+            line_edited.pop(line_edited.index(str(i)))
