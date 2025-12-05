@@ -43,6 +43,7 @@ def day_4(part):
                 input_splits[position[1]] = "".join(mutable_row)
             removal_queue = [] # Resets the queue for the next iteration
         
+        print(*input_splits, sep="\n")
         print(f"Removed a total of {removed} rolls. That's a lot of damage.")
 
 def analyze_adjacent(input_splits, x, y, max_x, max_y):
